@@ -125,6 +125,9 @@ int main(void)
 	// TODO: Check button PA0; if pressed, change timer delay
 	  //volatile uint16_t button = GPIOA->IDR;
 	  if (~(GPIOA->IDR) & 1) {
+		  // debounce delay
+		  delay(100000);
+
 		  //swap ARR
 		  if(htim16.Init.Period == 999)
 			  __HAL_TIM_SET_AUTORELOAD(&htim16, 499);
